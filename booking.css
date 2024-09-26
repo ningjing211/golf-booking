@@ -122,6 +122,11 @@ input, textarea {
     padding-left: 10px;
     transition: 0.2s;
 }
+
+#calender-content {
+    background: #dbe8e9;
+}
+
 #calender-content {
     width: 700px;
     padding: 10px;
@@ -165,6 +170,7 @@ input, textarea {
     border: 6px solid #727ede;
     border-radius: 10px;
     transition: 0.4s;
+    margin-bottom: 74px;
 }
 #calender-buttons:hover {
     height: 70px;
@@ -235,7 +241,14 @@ textarea.formError, input.formError {
     width: 100px;
     height: 100px;
     transition: 0.4s;
+    font-size: 21px;
+    font-weight: 400;
 }
+
+#days {
+    background-color: hwb(59.64deg 64.73% 0% / 93%);
+}
+
 #days p {
     width: 100px;
     text-align: center;
@@ -277,3 +290,98 @@ textarea.formError, input.formError {
     background: linear-gradient(90deg, hsla(145, 83%, 74%, 1) 0%, hsla(204, 77%, 76%, 1) 100%);
     color: white;
 }
+
+.page-title {
+    font-size: 64px;
+    color: #b6f7ff;
+    margin-bottom: 18px;
+    letter-spacing: 4px;
+}
+
+.people-title {
+    font-size: 30px;
+    margin-bottom: 12px;
+}
+
+.group-wrap {
+    display: flex;
+    gap: 40px;
+    margin-bottom: 20px;
+}
+
+.group-wrap-yes {
+    display: flex;
+    background: #6bc4a6;
+    padding: 20px;
+    align-items: baseline;
+    border: 8px solid #46ebc6;
+    border-radius: 6px;
+}
+
+.group-wrap-no {
+    display: flex;
+    background: #c46b6b;
+    padding: 20px;
+    align-items: baseline;
+    border: 8px solid #ffac97;
+    border-radius: 6px;
+}
+
+.group-wrap-non-selected {
+    display: flex;
+    background: #dbd9d9;
+    padding: 20px;
+    align-items: baseline;
+    border: 8px solid #c8c8c8;
+    border-radius: 6px;
+    opacity: 0.7;
+}
+
+.non-selected-group {
+    font-size: 42px;
+    background: #e8e8e8;
+    padding: 20px 32px;
+    border-radius: 50px;
+}
+
+.yes-group {
+    font-size: 42px;
+    background: #46ebc6;
+    padding: 20px 32px;
+    border-radius: 50px;
+}
+
+.non-group {
+    font-size: 42px;
+    background: #ffac97;
+    padding: 20px 32px;
+    border-radius: 50px;
+}
+
+.group-or-not {
+    margin-left: 8px;
+}
+
+.group {
+    transition: 0.3s all ease-in-out;
+}
+
+.group:hover {
+    cursor: pointer;
+    opacity: 1;
+}
+
+.group-wrap-non-selected:hover {
+    transition: 0.3s all ease-in-out;
+    opacity: 1;
+} 
+
+
+.blue {
+    color: #13a7d7;
+  }
+  
+  .reset {
+    margin-left: 0;
+    clear: both;
+  }
