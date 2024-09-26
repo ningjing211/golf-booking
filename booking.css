@@ -83,16 +83,20 @@ input, textarea {
     border: 6px solid #727ede;
     border-radius: 10px;
     overflow: hidden;
+    background-color: #dddec3;
 }
 #calender-panel {
     z-index: 5;
     position: relative;
-    background: #727ede;
+    background: #7176a0;
     border-top: 6px solid #727ede;
     color: white;
-    font-size: 30pt;
-    height: 60px;
+    font-size: 14pt;
+    height: 120px;
+    justify-content: center;
+    gap: 12px;
 }
+
 #calender-panel p {
     padding-right: 20px;
 }
@@ -385,3 +389,9 @@ textarea.formError, input.formError {
     margin-left: 0;
     clear: both;
   }
+
+  .month-day-past {
+    opacity: 0.2;
+    pointer-events: none;  /* This will prevent clicking on past dates */
+}
+

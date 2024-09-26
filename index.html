@@ -3,10 +3,12 @@
 <link rel="stylesheet" href="booking.css">
 <link rel="stylesheet" href="jungle.css">
 <link rel="stylesheet" href="toggles.css">
+<link rel="stylesheet" href="time-select.css">
 
 
 <div class="page-title"> Golf Booking</div>
 
+<!-- toggles.js -->
 <div class="option-row">
   
     <input class="option-input" checked id="option-1" type="radio" name="options" />
@@ -24,7 +26,7 @@
     </label>
     
   </div>
-
+<!-- jungle.js -->
 <div class="people-title">人數</div>
 <div class="span6">
     <div class="slider2" value="stuff"></div>            
@@ -32,7 +34,7 @@
 </div>
 
 
-
+<!-- select.js -->
 <div class="group-wrap">
 
     <div id="group-yes" class="group">
@@ -81,7 +83,7 @@
         </div>
     </div>
 </div>
-
+<!-- booking.js -->
 <div id="calender-wrapper">
 	<div id="calender-title" class="disable-select flex row center-v around">
 		<div id="left" class="flex row center-vh"><span><</span></div>
@@ -99,7 +101,7 @@
 	</div>
 	<div id="calender-content" class="flex row wrap disable-select">
 	</div>
-	<div id="booking-wrapper" class="flex column center-vh">
+	<!-- <div id="booking-wrapper" class="flex column center-vh">
 		<div id="booking-title" class="flex row center-vh bgColorRed">
 			<p class="flex row center-vh">DETAILS OF YOUR ENQUIRY</p>
 		</div>
@@ -130,9 +132,24 @@
 				<p><i>*Required field</i></p>
 			</div>
 		</div>
-	</div>
+	</div> -->
+
+    <form id="form-time" class="form-time">
+        <!-- <input type="text" id="datepicker" /> -->
+        <ul id="list-time-select"></ul>
+        <input type="hidden" name="time-select" />
+    </form>
+      
+    
 	<div id="calender-panel" class="flex row center-v end">
-		<div id="info" class="flex column center-vh bgColorDarkRed">
+        
+            <!-- <div id="holl-option" class="detail-item">18洞</div>
+            <div> - </div>
+            <div id="date-option" class="detail-item">10 月 25 日 2024年</div>
+            <div> - </div>
+            <div id="time-option" class="detail-item">11:00am</div> -->
+        
+		<!-- <div id="info" class="flex column center-vh bgColorDarkRed">
 			<div id="info-titles" class="flex row center-vh">
 				<p class="flex column center-vh">Start Date</p>
 				<p class="flex column center-vh">End Date</p>
@@ -144,8 +161,8 @@
 		</div>
 		<div id="clear" class="flex column center-vh bgColorDarkRed">
 			<p>CLEAR SELECTION</p>
-		</div>
-	</div>
+		</div> -->
+    </div>
 </div>
 	
 <div id="calender-buttons" class="flex row center-vh wrap">
@@ -156,6 +173,10 @@
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/jquery-ui.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.10/vue.min.js"></script>
+<script src="https://unpkg.com/vue-time-select@0.8.1/dist/vueTimeSelect.umd.min.js"></script>
 <script src="booking.js"></script>
+<script src="monitor.js"></script>
 <script src="select.js"></script>
 <script src="jungle.js"></script>
+<script src="time-select.js"></script>

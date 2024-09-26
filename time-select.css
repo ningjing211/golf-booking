@@ -1,0 +1,35 @@
+#list-time-select {
+  /* width: 300px; */
+  display: flex;
+  flex-wrap: wrap;
+  padding: 0;
+  margin: 0;
+}
+
+#list-time-select li {
+  width: 25%;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  border: 1px solid #cdcdcd;
+  margin:-1px 0 0 -1px;
+  overflow: hidden;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+#list-time-select li.active {
+  background-color: rgb(77 199 155);
+  color: white;
+  border: 1px solid rgb(48, 158, 94);;
+}
+
+.form-time {
+  margin: 48px auto;
+  padding: 0;
+  width: 630px;
+  display: none;
+}
+

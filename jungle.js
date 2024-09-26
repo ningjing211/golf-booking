@@ -43,7 +43,7 @@ $(function () {
                   var pips = this.options.max - this.options.min;					
   
                       // for every stop in the slider, we create a pip.
-                      for( i=0; i<=pips; i++ ) {
+                      for( i=1; i<=pips; i++ ) {
   
                           // hold a span element for the pip
                           var s = $('<span class="ui-slider-pip"><span class="ui-slider-line"></span><span class="ui-slider-number">'+i+'</span></span>');

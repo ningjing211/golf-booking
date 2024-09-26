@@ -109,53 +109,64 @@ function daysInMonth(month) {
 	return new Date(currentYear, month, 0).getDate();
 }
 function displayCalender() {
-	var days = daysInMonth(currentMonth + 1);
+    var days = daysInMonth(currentMonth + 1);
+    var today = new Date();
+    today.setHours(0, 0, 0, 0);  // Set time to midnight for accurate comparison
 
-	$("#calender-title p").html(monthNames[currentMonth].toUpperCase());
-	$("#calender-content").html("");
+    $("#calender-title p").html(monthNames[currentMonth].toUpperCase());
+    $("#calender-content").html("");
 
-	for (var i = 1; i < firstDayOffset(new Date()); i++) {
-		$("#calender-content").append("<div class='month flex center-vh'></div>");
-	}
-	for (var i = 1; i <= days; i++) {
-		var day = new Date(currentYear, currentMonth, i).getDay();
-		var string = "<div class='month'><div id='" + dayNames[day] + "-" + i + "-" + monthNames[currentMonth] + "-" + currentYear + "'class='month-selector flex center-vh clickable' onclick='monthClick(this)'><p>" + i + "</p></div></div>";
-		$("#calender-content").append(string);
-	}
+    for (var i = 1; i < firstDayOffset(new Date()); i++) {
+        $("#calender-content").append("<div class='month flex center-vh'></div>");
+    }
+    for (var i = 1; i <= days; i++) {
+        var day = new Date(currentYear, currentMonth, i);
+        var dayOfWeek = day.getDay();
+        var dayId = dayNames[dayOfWeek] + "-" + i + "-" + monthNames[currentMonth] + "-" + currentYear;
+        var dayClass = "month-selector flex center-vh clickable";
+        
+        // Check if the day is in the past
+        if (day < today) {
+            dayClass += " month-day-past";  // Add the CSS class for past dates
+        }
+        
+        var string = "<div class='month'><div id='" + dayId + "' class='" + dayClass + "' onclick='monthClick(this)'><p>" + i + "</p></div></div>";
+        $("#calender-content").append(string);
+    }
 
-	checkSelected();
-	checkBookings();
+    checkSelected();
+    checkBookings();
 }
 function monthClick(e) {
-	if ($(e).hasClass("clickable")) {
-		clickedDays += 1;
+    var today = new Date();
+    today.setHours(0, 0, 0, 0);  // 設定時間為午夜，方便比較
 
-		if (clickedDays == 1) {
-			$(e).toggleClass("clicked");
-			startDateIndex = parseInt($(e).attr('id').split('-')[1]);
-			startDate = new Date(currentYear, currentMonth, startDateIndex);
-		}
-		if (clickedDays > 1) {
-			endDateIndex = parseInt($(e).attr('id').split('-')[1]);
-			endDate = new Date(currentYear, currentMonth, endDateIndex);
-		}
-		if (endDate > startDate) {
-			var clicked = $(".clicked");
-			$(clicked).not(clicked[0]).removeClass("clicked");
-			$(e).toggleClass("clicked");
+    // 解析選擇的日期
+    var dayIndex = parseInt($(e).attr('id').split('-')[1]);
+    var selectedDate = new Date(currentYear, currentMonth, dayIndex);
 
-			dateArray = getDates(startDate, endDate);
-			dateArray = formatDates(dateArray)
-			selectedDates = dateArray;
+    // 檢查是否為過去的日期
+    if (selectedDate < today) {
+        alert("You cannot select a past date.");
+        return;  // 防止選取過去的日期
+    }
 
-			for (var i = 0; i < dateArray.length; i++) {
-				$("#" + dateArray[i]).addClass("clicked");
-			}
-		}
-		$("#startdate").html(startDate.toString().split(' ').slice(0, 4).join(' '));
-		$("#enddate").html(endDate.toString().split(' ').slice(0, 4).join(' '));
-	}
+    // 只允許單選: 移除所有其他被選取的日期
+    $(".month .month-selector").removeClass("clicked");
+
+    // 將當前點擊的日期設為選取狀態
+    $(e).addClass("clicked");
+
+    // 設定開始日期並更新顯示
+    startDate = selectedDate;
+    $("#startdate").html(startDate.toString().split(' ').slice(0, 4).join(' '));
+    
+    // 顯示 #form-time 區域
+    $("#form-time").fadeIn(700);  // 淡入動畫
+    $("#form-time").css("display", "block");
 }
+
+
 function firstDayOffset(date) {
 	return new Date(currentYear, currentMonth, 1).getDay();
 }
